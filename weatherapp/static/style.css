@@ -1,0 +1,176 @@
+:root {
+    --white: #ffffff;
+    --off-white: #e5e5e5;
+    --transp-white-1: rgba(255, 255, 255, 0.25);
+    --transp-white-2: rgba(255, 255, 255, 0.18);
+    --custom-yellow: #C14A09; 
+    --blue-2: #052933; 
+    --shadow: rgba(3, 46, 87, 0.2);
+}
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Heading Styles */
+h1 {
+    text-align: center;
+    color: var(--custom-yellow);
+    margin-bottom: 15px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--blue-2); 
+}
+
+/* Form Styles */
+form {
+    display: grid;
+    grid-template-columns: 72% 25%;
+    grid-gap: 3%;
+}
+
+/* Container Styles */
+.container {
+    width: 50%;
+    background: var(--transp-white-2);
+    backdrop-filter: blur(10px);
+    margin: 5rem auto;
+    padding: 2rem;
+    border: 2px solid var(--custom-yellow); /* Custom color border */
+    border-radius: 10px;
+    color: var(--blue-2); /* Text color */
+    min-height: 600px; /* Ensure a minimum height */
+    max-width: 1200px; /* Limit maximum width for large screens */
+}
+
+/* Input and Button Styles */
+input,
+.btn::placeholder {
+    background-color: transparent;
+    padding: .5rem;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid var(--custom-yellow); /* Custom color border */
+    color: var(--custom-yellow); /* Text color */
+}
+
+input::placeholder {
+    color: var(--custom-yellow); /* Placeholder color */
+}
+
+.btn {
+    padding: .5rem 1rem;
+    border: 2px solid var(--custom-yellow); /* Custom color border */
+    cursor: pointer;
+    transition: .3s;
+    color: var(--custom-yellow); /* Text color */
+    background-color: transparent;
+    border-radius: 0.3em;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    background-color: var(--custom-yellow); /* Custom color hover background */
+    color: var(--white); /* White text on hover */
+}
+
+/* Weather Info Styles */
+.weather {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+}
+
+.left {
+    width: 50%; 
+    padding: .3rem;
+    padding-bottom: 0;
+    border-radius: 10px 0 0 10px;
+    height: auto; 
+    line-height: 3;
+    text-transform: uppercase;
+    background: var(--transp-white-2);
+    backdrop-filter: blur(10px);
+}
+
+.temp {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.city {
+    margin-top: -22px;
+    text-align: center;
+    color: var(--custom-yellow); /* City text color */
+}
+
+.right {
+    width: 50%; /* Adjust width for smaller screens */
+    padding: .3rem;
+    border-radius: 0 10px 10px 0;
+    line-height: 2.5;
+    background: var(--transp-white-2);
+    backdrop-filter: blur(10px);
+}
+
+.icon {
+    height: 85px;
+    padding: .5rem;
+    border-radius: 0 10px 0 0;
+    color: var(--custom-yellow); /* Icon color */
+}
+
+.condition {
+    height: 135px;
+    border-radius: 0 0 10px;
+    color: var(--custom-yellow); /* Condition text color */
+    font-size: 20px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 1000px) {
+    .container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .weather {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .container {
+        text-align: center;
+        width: 90%;
+        height: auto;
+    }
+
+    .left,
+    .right {
+        width: 100%; 
+        border-radius: 10px; 
+        margin: 0; 
+    }
+
+    form {
+        grid-template-columns: 100%;
+    }
+}
+
+body {
+    background-image: url('https://images.pexels.com/photos/125510/pexels-photo-125510.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}

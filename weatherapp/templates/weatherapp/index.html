@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Weather App</h1>
+        <center><h2 class="heading">Developed with Django by Vinod</h2></center>
+
+        
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter City">
+            <button type="submit" class="btn">Search</button>
+        </form>
+        
+        {% if weather_data %}
+            {% for weather in weather_data %}
+                <div class="weather">
+                    <div class="left">
+                        {% if weather.temperature is not None %}
+                            <h2 class="temp">{{ weather.temperature }}&#176; C</h2>
+                            <h2 class="city">{{ weather.city }}</h2>
+                        {% else %}
+                            <h2 class="temp">TEMPERATURE NOT AVAILABLE</h2>
+                            <h2 class="city">{{ weather.city }}</h2>
+                        {% endif %}
+                    </div>
+                    <div class="right">
+                        {% if weather.icon %}
+                            <div class="icon">
+                                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" width="120px">
+                            </div>
+                        {% endif %}
+                        <div class="condition">
+                            {% if weather.description %}
+                                <p>{{ weather.description }}</p>
+                                <p>{{ weather.day }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% if weather.exception_occurred %}
+                    <div class="weather">
+                        <p>City information is not available from Weather API for {{ weather.city }}. Please try again.</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
