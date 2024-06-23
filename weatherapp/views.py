@@ -45,7 +45,7 @@ def home(request):
         if city_to_search and city.lower() != city_to_search.lower():
             continue
         
-        api_key = '14071d9d2ee599df4d6e134d7f3ac245'
+        api_key = ''
         url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
 
         try:
